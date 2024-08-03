@@ -10,10 +10,18 @@ const http = require("http");
 
 const server = http.createServer((req , res)=>{
     // console.log(req.url);
-    if (req.url = "/"){
-        res.end("Hello from Hom Sides");
-    } else if (req.url = "/about"){
-        res.end("Hello from AboutUS Sides");
+    if(req.url == "/"){
+        res.end("Hello from Home Sides");
+    }else if (req.url == "/about"){
+           res.end("Hello from AboutUS Sides");
+    }else if (req.url == "/contact"){
+        res.end("Hello from contactUS Sides");
+    }else{
+        res.writeHead(404,{"Content-type" : "text/html"});  //Sends a response header to the request. 
+        //The status code is a 3-digit HTTP status code, like 404. The last argument, 
+        //headers, are the response headers. Optionally one can give a human-readable 
+        //statusMessage as the second argument. 
+        res.end("<h1> 404 Error Pages, page doen`t exist </h1>")
     }
 });
 
