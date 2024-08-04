@@ -11,6 +11,8 @@ const fs = require("fs");
 // const url = require("url");
 
 const server = http.createServer((req , res)=>{
+    const data =fs.readFileSync(`${__dirname}/UserData/userapi.json`, "utf-8");
+        const objData = JSON.parse(data);
     // console.log(req.url);
     if(req.url == "/"){
         res.end("Hello from Home Sides");
@@ -19,15 +21,9 @@ const server = http.createServer((req , res)=>{
     }else if (req.url == "/contact"){
         res.end("Hello from contactUS Sides");
     }else if(req.url =="/userapi"){
-        fs.readFile(`${__dirname}/UserData/userapi.json`, "utf-8", (err , data)=> {
-            console.log(data);
-            // res.end(data); //thought this we can get all data of file 
-            //but if i want to just one person data then
-            const objData = JSON.parse(data);
-            res.end(objData[0].name);
-        });
-    }
-    else{
+        res.writeHead(200,{"content-type": "application/json" });
+        res.end(objData[0].name);
+        }else{
         res.writeHead(404,{"Content-type" : "text/html"});  //Sends a response header to the request. 
         //The status code is a 3-digit HTTP status code, like 404. The last argument, 
         //headers, are the response headers. Optionally one can give a human-readable 
