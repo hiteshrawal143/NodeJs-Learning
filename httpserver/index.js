@@ -6,6 +6,7 @@
 //you should include an HTP header with the correct content type:
 
 const http = require("http");
+const fs = require("fs");
 // const url = require("url");
 
 const server = http.createServer((req , res)=>{
@@ -16,7 +17,14 @@ const server = http.createServer((req , res)=>{
            res.end("Hello from AboutUS Sides");
     }else if (req.url == "/contact"){
         res.end("Hello from contactUS Sides");
-    }else{
+    }else if(req.url =="/userapi"){
+        fs.readFile(`${__dirname}/UserApi/userapi.json`, "utf-8", (err , data)=> {
+            console.log(data);
+            // res.end("Hello from userAPI Sides");
+            res.end(data);
+        });
+    }
+    else{
         res.writeHead(404,{"Content-type" : "text/html"});  //Sends a response header to the request. 
         //The status code is a 3-digit HTTP status code, like 404. The last argument, 
         //headers, are the response headers. Optionally one can give a human-readable 
