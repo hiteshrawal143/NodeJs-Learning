@@ -18,7 +18,7 @@ const server = http.createServer((req , res)=>{
     }else if (req.url == "/contact"){
         res.end("Hello from contactUS Sides");
     }else if(req.url =="/userapi"){
-        fs.readFile(`${__dirname}/UserApi/userapi.json`, "utf-8", (err , data)=> {
+        fs.readFile(`${__dirname}/UserData/userapi.json`, "utf-8", (err , data)=> {
             console.log(data);
             // res.end("Hello from userAPI Sides");
             res.end(data);
