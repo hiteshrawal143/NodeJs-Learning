@@ -1,3 +1,4 @@
+// note - in this file every different different phase we can check on my Github commit.
 //the http.createserver() method includes request and respond parameters is supplied by node.js
 //the request object can be used to get information about the current Http request 
 //eg. , url , request header, and data
@@ -20,8 +21,10 @@ const server = http.createServer((req , res)=>{
     }else if(req.url =="/userapi"){
         fs.readFile(`${__dirname}/UserData/userapi.json`, "utf-8", (err , data)=> {
             console.log(data);
-            // res.end("Hello from userAPI Sides");
-            res.end(data);
+            // res.end(data); //thought this we can get all data of file 
+            //but if i want to just one person data then
+            const objData = JSON.parse(data);
+            res.end(objData[0].name);
         });
     }
     else{
