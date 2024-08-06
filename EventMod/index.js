@@ -11,5 +11,15 @@ const event = new EventEMitter();
 event.on("SayMyName", ()=> {
     console.log("Your Name is Hitesh");
 });
+// the concept is quite simple , emmiter objects emit named events that cause previosly
+// registered listeners to be called. So, an emmiter object 
+//basically has two main features.
+event.on("SayMyName", ()=> {
+    console.log("Your Middle Name is Rawal");
+});
+
+event.on("SayMyName", ()=> {
+    console.log("Your LastName is Kumar");
+});
 
 event.emit("SayMyName")
