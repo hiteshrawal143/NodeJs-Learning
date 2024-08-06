@@ -8,18 +8,8 @@ where you can create-, fire-, and listen for- your own events.
 const  EventEMitter = require("events");  //where EventEmitter is class (captial E)
 
 const event = new EventEMitter();
-event.on("SayMyName", ()=> {
-    console.log("Your Name is Hitesh");
-});
-// the concept is quite simple , emmiter objects emit named events that cause previosly
-// registered listeners to be called. So, an emmiter object 
-//basically has two main features.
-event.on("SayMyName", ()=> {
-    console.log("Your Middle Name is Rawal");
+event.on("CheckPage", (sc, msg)=> {
+    console.log(`status code is ${sc} and the page is ${msg}`);
 });
 
-event.on("SayMyName", ()=> {
-    console.log("Your LastName is Kumar");
-});
-
-event.emit("SayMyName")
+event.emit("CheckPage", 200, "ok")
